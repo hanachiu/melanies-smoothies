@@ -2,6 +2,20 @@
 import streamlit as st
 from snowflake.snowpark.functions import col
 
+import snowflake.connector
+
+try:
+    cnx = snowflake.connector.connect(
+        user='your_username',
+        password='your_password',
+        account='your_account.snowflakecomputing.com',  # Sometimes it's just 'your_account'
+        warehouse='your_warehouse',
+        database='your_database',
+        schema='your_schema'
+    )
+except Exception as e:
+    print("Failed to connect:", e)
+    
 # Write directly to the app
 st.title(":cup_with_straw: Customize Your Smoothie! :cup_with_straw:")
 st.write(
